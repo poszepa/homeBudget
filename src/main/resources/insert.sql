@@ -10,7 +10,7 @@ CREATE TABLE wyplata(
 CREATE TABLE kieszonkowe(
     id INT AUTO_INCREMENT,
     nazwaWydatku VARCHAR(50),
-    opisWydatku LONGTEXT,
+    opisWydatku VARCHAR(50),
     kwotaWydatku DOUBLE,
     dataDodania DATE,
     PRIMARY KEY (id)
@@ -19,7 +19,7 @@ CREATE TABLE kieszonkowe(
 CREATE TABLE zobowiazania(
                                    id INT AUTO_INCREMENT,
                                    nazwaWydatku VARCHAR(50),
-                                   opisWydatku LONGTEXT,
+                                   opisWydatku VARCHAR(50),
                                    kwotaWydatku DOUBLE,
                                    dataDodania DATE,
                                    PRIMARY KEY (id)
@@ -28,7 +28,7 @@ CREATE TABLE zobowiazania(
 CREATE TABLE potrzeby_codzienne(
                             id INT AUTO_INCREMENT,
                             nazwaWydatku VARCHAR(50),
-                            opisWydatku LONGTEXT,
+                            opisWydatku VARCHAR(50),
                             kwotaWydatku DOUBLE,
                             dataDodania DATE,
                             PRIMARY KEY (id)
@@ -37,7 +37,7 @@ CREATE TABLE potrzeby_codzienne(
 CREATE TABLE podarunki(
                                    id INT AUTO_INCREMENT,
                                    nazwaWydatku VARCHAR(50),
-                                   opisWydatku LONGTEXT,
+                                   opisWydatku VARCHAR(50),
                                    kwotaWydatku DOUBLE,
                                    dataDodania DATE,
                                    PRIMARY KEY (id)
@@ -46,7 +46,7 @@ CREATE TABLE podarunki(
 CREATE TABLE dom(
                                    id INT AUTO_INCREMENT,
                                    nazwaWydatku VARCHAR(50),
-                                   opisWydatku LONGTEXT,
+                                   opisWydatku VARCHAR(50),
                                    kwotaWydatku DOUBLE,
                                    dataDodania DATE,
                                    PRIMARY KEY (id)
@@ -55,7 +55,7 @@ CREATE TABLE dom(
 CREATE TABLE ubezpieczenie(
                                    id INT AUTO_INCREMENT,
                                    nazwaWydatku VARCHAR(50),
-                                   opisWydatku LONGTEXT,
+                                   opisWydatku VARCHAR(50),
                                    kwotaWydatku DOUBLE,
                                    dataDodania DATE,
                                    PRIMARY KEY (id)
@@ -64,7 +64,7 @@ CREATE TABLE ubezpieczenie(
 CREATE TABLE technologia(
                                    id INT AUTO_INCREMENT,
                                    nazwaWydatku VARCHAR(50),
-                                   opisWydatku LONGTEXT,
+                                   opisWydatku VARCHAR(50),
                                    kwotaWydatku DOUBLE,
                                    dataDodania DATE,
                                    PRIMARY KEY (id)
@@ -73,7 +73,7 @@ CREATE TABLE technologia(
 CREATE TABLE transport(
                                    id INT AUTO_INCREMENT,
                                    nazwaWydatku VARCHAR(50),
-                                   opisWydatku LONGTEXT,
+                                   opisWydatku VARCHAR(50),
                                    kwotaWydatku DOUBLE,
                                    dataDodania DATE,
                                    PRIMARY KEY (id)
@@ -82,7 +82,7 @@ CREATE TABLE transport(
 CREATE TABLE podroze(
                                    id INT AUTO_INCREMENT,
                                    nazwaWydatku VARCHAR(50),
-                                   opisWydatku LONGTEXT,
+                                   opisWydatku VARCHAR(50),
                                    kwotaWydatku DOUBLE,
                                    dataDodania DATE,
                                    PRIMARY KEY (id)
@@ -91,7 +91,7 @@ CREATE TABLE podroze(
 CREATE TABLE media(
                                    id INT AUTO_INCREMENT,
                                    nazwaWydatku VARCHAR(50),
-                                   opisWydatku LONGTEXT,
+                                   opisWydatku VARCHAR(50),
                                    kwotaWydatku DOUBLE,
                                    dataDodania DATE,
                                    PRIMARY KEY (id)
@@ -100,7 +100,7 @@ CREATE TABLE media(
 CREATE TABLE oszczednosci(
                                    id INT AUTO_INCREMENT,
                                    nazwaWydatku VARCHAR(50),
-                                   opisWydatku LONGTEXT,
+                                   opisWydatku VARCHAR(50),
                                    kwotaWydatku DOUBLE,
                                    dataDodania DATE,
                                    PRIMARY KEY (id)
@@ -109,7 +109,7 @@ CREATE TABLE oszczednosci(
 CREATE TABLE zdrowie(
                                    id INT AUTO_INCREMENT,
                                    nazwaWydatku VARCHAR(50),
-                                   opisWydatku LONGTEXT,
+                                   opisWydatku VARCHAR(50),
                                    kwotaWydatku DOUBLE,
                                    dataDodania DATE,
                                    PRIMARY KEY (id)

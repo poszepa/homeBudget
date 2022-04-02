@@ -18,11 +18,12 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <form class="dodajWydatek">
+            <form class="dodajWydatek" method="post" action="/homebudget/dodajWydatek">
                 <input type="text" name="skrotWydatku" placeholder="skrót wydatku najpiej jedno słowo." class="form-control">
-                <textarea name="Opiswydatku" placeholder="opis Wydatku" class="form-control"></textarea>
+                <textarea name="opisWydatku" placeholder="opis Wydatku" class="form-control"></textarea>
                 <input type="number" name="kwota" placeholder="kwota wydatku" class="form-control">
-                <input type="hidden" name="kategoria" class="form-control">
+                <input type="hidden" name="kategoria" value="${kategoria}">
+                <input type="hidden" name="nazwaBazy" value="${nazwaBazy}">
                 <button class="btn btn-primary" type="submit">Dodaj Wydatek</button>
             </form>
         </div>

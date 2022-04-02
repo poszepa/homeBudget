@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page isELIgnored="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -12,24 +13,25 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <form>
-                <select class="form-select" aria-label="Default select example">
+            <form action="/homebudget/listaWydatkow" method="post">
+                <select class="form-select" aria-label="Default select example" name="miesiac">
                     <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <c:forEach var="miesiac" items="${miesiacList}">
+                    <option value="${miesiac.miesiac}">${miesiac.miesiac}</option>
+                    </c:forEach>
                 </select>
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" aria-label="Default select example" name="rok">
                     <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <c:forEach var="rok" items="${rokList}">
+                        <option value="${rok.rok}">${rok.rok}</option>
+                    </c:forEach>
                 </select>
-                <button class="btn btn-primary" type="submit">Button</button>
+                <button class="btn btn-primary" type="submit">Szukaj</button>
             </form>
         </div>
         <div class="col-6">
-            Pozostało Pieniędzy:
+            <p>Pozostało Pieniędzy:</p>
+            <p>Aktualnie wybrana baza: ${nazwaBazy}</p>
         </div>
     </div>
     <div class="row">
@@ -38,18 +40,18 @@
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?kategoria=dom">dom</a></th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?kategoria=kieszonkowe">kieszonkowe</a></th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?kategoria=media">media</a></th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?kategoria=oszczednosci">oszczednosci</a></th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?kategoria=podarunki">podarunki</a></th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?kategoria=podroze">podroze</a></th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?kategoria=potrzeby_codzienne">potrzeby_codzienne</a></th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?kategoria=technologia">technologia</a></th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?kategoria=transport">transport</a></th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?kategoria=ubezpieczenie">ubezpieczenie</a></th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?kategoria=zdrowia">zdrowia</a></th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?kategoria=zobowiazania">zobowiazania</a></th>
+                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=dom">dom</a></th>
+                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=kieszonkowe">kieszonkowe</a></th>
+                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=media">media</a></th>
+                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=oszczednosci">oszczednosci</a></th>
+                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=podarunki">podarunki</a></th>
+                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=podroze">podroze</a></th>
+                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=potrzeby_codzienne">potrzeby_codzienne</a></th>
+                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=technologia">technologia</a></th>
+                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=transport">transport</a></th>
+                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=ubezpieczenie">ubezpieczenie</a></th>
+                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=zdrowia">zdrowia</a></th>
+                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=zobowiazania">zobowiazania</a></th>
                 </tr>
                 </thead>
                 <tbody>

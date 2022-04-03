@@ -102,14 +102,11 @@ public class WydatekDao {
     public Wydatek findWydatekById(int idWydatku, String nazwaBazy, String kategoria) {
         try (Connection connection = DbUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM " + nazwaBazy + "." + kategoria +" WHERE id= " + idWydatku +";");
+            System.out.println("SELECT * FROM " + nazwaBazy + "." + kategoria +" WHERE id= " + idWydatku +";");
             ResultSet resultSet = statement.executeQuery();
             Wydatek wydatek = new Wydatek();
             while (resultSet.next()) {
-                wydatek.setId(resultSet.getInt("id"));
-                wydatek.setNazwaWydatku(resultSet.getString("nazwaWydatku"));
-                wydatek.setOpisWydatku(resultSet.getString("opisWydatku"));
-                wydatek.setKwotaWydatku(resultSet.getDouble("kwotaWydatku"));
-                wydatek.setDataDodania(resultSet.getString("dataDodania"));
+
             }
             return wydatek;
         } catch (SQLException e) {

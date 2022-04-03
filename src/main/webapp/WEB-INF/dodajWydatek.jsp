@@ -50,7 +50,7 @@
                         <td class="col">${element.opisWydatku}</td>
                         <td class="col">${element.kwotaWydatku}</td>
                         <td class="col">${element.dataDodania}</td>
-                        <th scope="col"><button onclick="location.href='/homebudget/edytujWydatek?nazwaBazy=${nazwaBazy}&kategoria=podarunki&id=${element.id}'" type="button" class="btn btn-outline-warning">Edytuj</button></th>
+                        <th scope="col"><button onclick="location.href='/homebudget/edytujWydatek?nazwaBazy=${nazwaBazy}&kategoria=${kategoria}&id=${element.id}'" type="button" class="btn btn-outline-warning">Edytuj</button></th>
                     </tr>
                     </c:forEach>
                     </tbody>

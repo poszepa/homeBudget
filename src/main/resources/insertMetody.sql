@@ -15,3 +15,7 @@ SHOW TABLES  FROM kwiecien2022;
 SELECT SUM(kwotaWydatku) AS SUM FROM kwiecien2022.dom;
 
 SELECT * FROM kwiecien2022.dom WHERE id=1;
+
+SELECT * FROM kwiecien2022.podarunki WHERE id= 2;
+
+SELECT * FROM kwiecien2022.dom WHERE id= 2;

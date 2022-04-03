@@ -28,7 +28,7 @@ public class ListaWydatkow extends HttpServlet {
         req.setAttribute("rokList", rokList);
 
         WydatekDao wydatekDao = new WydatekDao();
-        req.setAttribute("sumWydatkow", wydatekDao.sumaWydatkow(nazwaBazy));
+//        req.setAttribute("sumWydatkow", wydatekDao.sumaWydatkow(nazwaBazy));
 
 
 

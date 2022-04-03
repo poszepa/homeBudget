@@ -2,6 +2,7 @@ package homeBudget.Servlet;
 
 import homeBudget.DAO.MiesiacDao;
 import homeBudget.DAO.RokDao;
+import homeBudget.DAO.WydatekDao;
 import homeBudget.model.Miesiac;
 import homeBudget.model.Rok;
 
@@ -19,12 +20,16 @@ public class ListaWydatkow extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         MiesiacDao miesiacDao = new MiesiacDao();
         RokDao rokDao = new RokDao();
-        String nazwaBazy = req.getParameter("miesiac");
+        String nazwaBazy = req.getParameter("nazwaBazy");
         req.setAttribute("nazwaBazy", nazwaBazy);
         List<Miesiac> miesiacList = miesiacDao.miesiacList();
         List<Rok> rokList = rokDao.yearList();
         req.setAttribute("miesiacList", miesiacList);
         req.setAttribute("rokList", rokList);
+
+        WydatekDao wydatekDao = new WydatekDao();
+        req.setAttribute("sumWydatkow", wydatekDao.sumaWydatkow(nazwaBazy));
+
 
 
         getServletContext().getRequestDispatcher("/WEB-INF/Wydatki.jsp").forward(req,resp);
@@ -35,6 +40,6 @@ public class ListaWydatkow extends HttpServlet {
         String miesiac = req.getParameter("miesiac");
         String rok = req.getParameter("rok");
 
-        resp.sendRedirect("/homebudget/listaWydatkow?miesiac=" + miesiac + rok);
+        resp.sendRedirect("/homebudget/listaWydatkow?nazwaBazy=" + (miesiac + rok).toLowerCase());
     }
 }

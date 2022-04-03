@@ -40,73 +40,73 @@
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=dom">dom</a></th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=kieszonkowe">kieszonkowe</a></th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=media">media</a></th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=oszczednosci">oszczednosci</a></th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=podarunki">podarunki</a></th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=podroze">podroze</a></th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=potrzeby_codzienne">potrzeby_codzienne</a></th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=technologia">technologia</a></th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=transport">transport</a></th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=ubezpieczenie">ubezpieczenie</a></th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=zdrowia">zdrowia</a></th>
-                    <th scope="col"><a href="/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=zobowiazania">zobowiazania</a></th>
+                    <th scope="col">dom</th>
+                    <th scope="col">kieszonkowe</th>
+                    <th scope="col">media</th>
+                    <th scope="col">oszczednosci</th>
+                    <th scope="col">podarunki</th>
+                    <th scope="col">podroze</th>
+                    <th scope="col">potrzeby_codzienne</th>
+                    <th scope="col">technologia</th>
+                    <th scope="col">transport</th>
+                    <th scope="col">ubezpieczenie</th>
+                    <th scope="col">zdrowia</th>
+                    <th scope="col">zobowiazania</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                 <tr style="background-color: grey">
-                    <th scope="col">SUMA</th>
-                    <th scope="col">zl</th>
-                    <th scope="col">zl</th>
-                    <th scope="col">zl</th>
-                    <th scope="col">zl</th>
-                    <th scope="col">zl</th>
-                    <th scope="col">zl</th>
-                    <th scope="col">zl</th>
-                    <th scope="col">zl</th>
-                    <th scope="col">zl</th>
-                    <th scope="col">zl</th>
-                    <th scope="col">zl</th>
-                    <th scope="col">zl</th>
+                    <th scope="col">---</th>
+                    <th scope="col">---</th>
+                    <th scope="col">---</th>
+                    <th scope="col">---</th>
+                    <th scope="col">---</th>
+                    <th scope="col">---</th>
+                    <th scope="col">---</th>
+                    <th scope="col">---</th>
+                    <th scope="col">---</th>
+                    <th scope="col">---</th>
+                    <th scope="col">---</th>
+                    <th scope="col">---</th>
+                    <th scope="col">---</th>
                 </tr>
-                    <th scope="row">1</th>
+                    <th scope="row">#</th>
                     <td>
-                        <button type="button" class="btn btn-outline-primary">Primary</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=dom'" type="button" class="btn btn-outline-primary">${sumWydatkow.get(0)}</button>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-outline-secondary">Secondary</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=kieszonkowe'" type="button" class="btn btn-outline-secondary">${sumWydatkow.get(1)}</button>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-outline-success">Success</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=media'" type="button" class="btn btn-outline-success">${sumWydatkow.get(2)}</button>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-outline-danger">Danger</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=oszczednosci'" type="button" class="btn btn-outline-danger">${sumWydatkow.get(3)}</button>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-outline-warning">Warning</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=podarunki'" type="button" class="btn btn-outline-warning">${sumWydatkow.get(4)}</button>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-outline-info">Info</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=podroze'" type="button" class="btn btn-outline-info">${sumWydatkow.get(5)}</button>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-outline-dark">Dark</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=potrzeby_codzienne'" type="button" class="btn btn-outline-dark">${sumWydatkow.get(6)}</button>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-outline-primary">Primary</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=technologia'" type="button" class="btn btn-outline-primary">${sumWydatkow.get(7)}</button>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-outline-secondary">Secondary</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=transport'" type="button" class="btn btn-outline-secondary">${sumWydatkow.get(8)}</button>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-outline-warning">Warning</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=ubezpieczenie'" type="button" class="btn btn-outline-warning">${sumWydatkow.get(9)}</button>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-outline-warning">Warning</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=zdrowie'" type="button" class="btn btn-outline-warning">${sumWydatkow.get(11)}</button>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-outline-info">Info</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=zobowiazania'" type="button" class="btn btn-outline-info">${sumWydatkow.get(12)}</button>
                     </td>
                 </tr>
                 </tbody>

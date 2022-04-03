@@ -10,4 +10,6 @@ INSERT INTO kwiecien2022.dom (nazwaWydatku, opisWydatku, kwotaWydatku, dataDodan
 
 
 
-SHOW TABLES FROM kwiecien2022;
+SHOW TABLES  FROM kwiecien2022;
+
+SELECT SUM(kwotaWydatku) AS SUM FROM kwiecien2022.dom;

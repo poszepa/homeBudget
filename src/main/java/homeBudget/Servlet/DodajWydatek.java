@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Locale;
 
 @WebServlet("/dodajWydatek")
 public class DodajWydatek extends HttpServlet {
@@ -16,6 +17,10 @@ public class DodajWydatek extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String kategoria = req.getParameter("kategoria");
         String nazwaBazy = req.getParameter("nazwaBazy");
+        String pelnaNazwaBazy = (nazwaBazy + "." + kategoria).toLowerCase();
+        req.setAttribute("nazwaBazy", nazwaBazy);
+        WydatekDao wydatekDao = new WydatekDao();
+        req.setAttribute("list", wydatekDao.getWydatekList(pelnaNazwaBazy));
 
         req.setAttribute("kategoria", kategoria);
         req.setAttribute("nazwaBazy", nazwaBazy);

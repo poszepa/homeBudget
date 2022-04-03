@@ -73,19 +73,24 @@ public class WydatekDao {
         }
     }
 
-    public List<Double> sumaWydatkow(String nazwaBazy){
+    public List<Double> sumaWydatkow(String nazwaBazy) {
         List<String> nazwyWydatkow = nazwaWydatkow(nazwaBazy);
+        System.out.println(nazwaBazy);
+        System.out.println(nazwyWydatkow);
         List<Double> sumaWydatkow = new ArrayList<>();
-        for(int i = 0 ; i < nazwyWydatkow.size(); i++) {
+        if(nazwyWydatkow.size() == 0) {
+            return null;
+        }
+        for (int i = 0; i < nazwyWydatkow.size(); i++) {
             double sum = 0;
-            try(Connection connection = DbUtil.getConnection()){
-                PreparedStatement statement = connection.prepareStatement("SELECT * FROM "+ nazwaBazy +"." + nazwyWydatkow.get(i) +";");
+            try (Connection connection = DbUtil.getConnection()) {
+                PreparedStatement statement = connection.prepareStatement("SELECT * FROM " + nazwaBazy + "." + nazwyWydatkow.get(i) + ";");
                 ResultSet resultSet = statement.executeQuery();
                 while (resultSet.next()) {
-                   sum += (resultSet.getDouble(4));
+                    sum += (resultSet.getDouble(4));
                 }
                 sumaWydatkow.add(sum);
-            }catch (SQLException e) {
+            } catch (SQLException e) {
                 e.printStackTrace();
                 return null;
             }
@@ -94,7 +99,27 @@ public class WydatekDao {
 
     }
 
+    public Wydatek findWydatekById(int idWydatku, String nazwaBazy, String kategoria) {
+        try (Connection connection = DbUtil.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM " + nazwaBazy + "." + kategoria +" WHERE id= " + idWydatku +";");
+            ResultSet resultSet = statement.executeQuery();
+            Wydatek wydatek = new Wydatek();
+            while (resultSet.next()) {
+                wydatek.setId(resultSet.getInt("id"));
+                wydatek.setNazwaWydatku(resultSet.getString("nazwaWydatku"));
+                wydatek.setOpisWydatku(resultSet.getString("opisWydatku"));
+                wydatek.setKwotaWydatku(resultSet.getDouble("kwotaWydatku"));
+                wydatek.setDataDodania(resultSet.getString("dataDodania"));
+            }
+            return wydatek;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
+
+
 
 
 

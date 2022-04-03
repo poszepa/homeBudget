@@ -39,19 +39,26 @@
                         <th scope="col">opis wydatku</th>
                         <th scope="col">kwota</th>
                         <th scope="col">data dodania</th>
+                        <th scope="col"></th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
                     <c:forEach items="${list}" var="element">
                     <tr>
-                        <td scope="col">1</td>
-                        <td scope="col">${element.opisWydatku}</td>
-                        <td scope="col">${element.kwotaWydatku}</td>
-                        <td scope="col">${element.dataDodania}</td>
+                        <td class="col">1</td>
+                        <td class="col">${element.opisWydatku}</td>
+                        <td class="col">${element.kwotaWydatku}</td>
+                        <td class="col">${element.dataDodania}</td>
+                        <th scope="col"><button onclick="location.href='/homebudget/edytujWydatek?nazwaBazy=${nazwaBazy}&kategoria=podarunki&id=${element.id}'" type="button" class="btn btn-outline-warning">Edytuj</button></th>
                     </tr>
                     </c:forEach>
-
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
                             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
                             crossorigin="anonymous"></script>

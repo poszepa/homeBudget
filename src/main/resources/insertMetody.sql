@@ -13,3 +13,5 @@ INSERT INTO kwiecien2022.dom (nazwaWydatku, opisWydatku, kwotaWydatku, dataDodan
 SHOW TABLES  FROM kwiecien2022;
 
 SELECT SUM(kwotaWydatku) AS SUM FROM kwiecien2022.dom;
+
+SELECT * FROM kwiecien2022.dom WHERE id=1;

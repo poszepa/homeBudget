@@ -32,20 +32,20 @@ public class WydatekDao {
     }
 
     public List<String> nazwaWydatkow(String nazwaBazy) {
-        String ADD_WYDATEK_QUERY = "SHOW TABLES FROM " + nazwaBazy + ";";
-        try (Connection connection = DbUtil.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(ADD_WYDATEK_QUERY, PreparedStatement.RETURN_GENERATED_KEYS);
-            ResultSet resultSet = statement.executeQuery();
-            List<String> stringList = new ArrayList<>();
-            while (resultSet.next()) {
-                String nazwaKategorii = resultSet.getString(1);
-                stringList.add(nazwaKategorii);
-            }
-            return stringList;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
+        List<String> nazwyWydatkowBazy = new ArrayList<>();
+        nazwyWydatkowBazy.add("dom");
+        nazwyWydatkowBazy.add("kieszonkowe");
+        nazwyWydatkowBazy.add("media");
+        nazwyWydatkowBazy.add("oszczednosci");
+        nazwyWydatkowBazy.add("podarunki");
+        nazwyWydatkowBazy.add("podroze");
+        nazwyWydatkowBazy.add("potrzeby_codzienne");
+        nazwyWydatkowBazy.add("technologia");
+        nazwyWydatkowBazy.add("transport");
+        nazwyWydatkowBazy.add("ubezpieczenie");
+        nazwyWydatkowBazy.add("zdrowie");
+        nazwyWydatkowBazy.add("zobowiazania");
+        return nazwyWydatkowBazy;
     }
 
     public List<Wydatek> getWydatekList(String nazwaBazy) {

@@ -97,10 +97,10 @@
                         <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=ubezpieczenie'" type="button" class="btn btn-outline-warning">${sumWydatkow.get(9)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=zdrowie'" type="button" class="btn btn-outline-warning">${sumWydatkow.get(11)}</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=zdrowie'" type="button" class="btn btn-outline-warning">${sumWydatkow.get(10)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=zobowiazania'" type="button" class="btn btn-outline-info">${sumWydatkow.get(12)}</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=zobowiazania'" type="button" class="btn btn-outline-info">${sumWydatkow.get(11)}</button>
                     </td>
                 </tr>
                 </tbody>

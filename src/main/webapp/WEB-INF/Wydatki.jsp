@@ -24,7 +24,7 @@
             </form>
         </div>
         <div class="col-6">
-            <p>Pozostało Pieniędzy:</p>
+            <p>Pozostało Pieniędzy: ${wyplata} zł</p>
             <p>Aktualnie wybrana baza: ${bazaDanych}</p>
         </div>
     </div>

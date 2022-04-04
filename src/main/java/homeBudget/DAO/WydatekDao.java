@@ -31,7 +31,7 @@ public class WydatekDao {
         }
     }
 
-    public List<String> nazwaWydatkow(String nazwaBazy) {
+    public List<String> nazwaWydatkow() {
         List<String> nazwyWydatkowBazy = new ArrayList<>();
         nazwyWydatkowBazy.add("dom");
         nazwyWydatkowBazy.add("kieszonkowe");
@@ -73,7 +73,7 @@ public class WydatekDao {
     }
 
     public List<Double> sumaWydatkow(String nazwaBazy) {
-        List<String> nazwyWydatkow = nazwaWydatkow(nazwaBazy);
+        List<String> nazwyWydatkow = nazwaWydatkow();
         List<Double> sumaWydatkow = new ArrayList<>();
         if (nazwyWydatkow.size() == 0) {
             return null;
@@ -143,6 +143,16 @@ public class WydatekDao {
             e.printStackTrace();
         }
     }
+
+
+    public Double sumaKosztow(List<Double> listaKosztow) {
+        Double sumaKosztowWLiscie = 0.0;
+        for(int i = 0 ; i < listaKosztow.size(); i++) {
+            sumaKosztowWLiscie += listaKosztow.get(i);
+        }
+        return sumaKosztowWLiscie;
+    }
+
 }
 
 

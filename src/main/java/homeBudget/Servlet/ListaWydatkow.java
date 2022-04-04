@@ -31,6 +31,12 @@ public class ListaWydatkow extends HttpServlet {
 
         req.setAttribute("sumWydatkow", wydatekDao.sumaWydatkow(nazwaBazy));
 
+        WyplataDao wyplataDao = new WyplataDao();
+        Double sumaPrzychodow = wyplataDao.getWyplata(nazwaBazy);
+        Double sumaKosztow = wydatekDao.sumaKosztow(wydatekDao.sumaWydatkow(nazwaBazy));
+
+        req.setAttribute("wyplata" , sumaPrzychodow - sumaKosztow);
+
 
 
         getServletContext().getRequestDispatcher("/WEB-INF/Wydatki.jsp").forward(req,resp);

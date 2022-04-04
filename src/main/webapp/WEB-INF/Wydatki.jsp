@@ -14,16 +14,10 @@
     <div class="row">
         <div class="col">
             <form action="/homebudget/listaWydatkow" method="post">
-                <select class="form-select" aria-label="Default select example" name="miesiac">
+                <select class="form-select" aria-label="Default select example" name="nazwaBazy">
                     <option selected>Open this select menu</option>
-                    <c:forEach var="miesiac" items="${miesiacList}">
-                    <option value="${miesiac.miesiac}">${miesiac.miesiac}</option>
-                    </c:forEach>
-                </select>
-                <select class="form-select" aria-label="Default select example" name="rok">
-                    <option selected>Open this select menu</option>
-                    <c:forEach var="rok" items="${rokList}">
-                        <option value="${rok.rok}">${rok.rok}</option>
+                    <c:forEach var="element" items="${nazwyBazDanych}">
+                    <option value="${element}">${element}</option>
                     </c:forEach>
                 </select>
                 <button class="btn btn-primary" type="submit">Szukaj</button>
@@ -31,7 +25,7 @@
         </div>
         <div class="col-6">
             <p>Pozostało Pieniędzy:</p>
-            <p>Aktualnie wybrana baza: ${nazwaBazy}</p>
+            <p>Aktualnie wybrana baza: ${bazaDanych}</p>
         </div>
     </div>
     <div class="row">
@@ -73,40 +67,40 @@
                 </tr>
                     <th scope="row">#</th>
                     <td>
-                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=dom'" type="button" class="btn btn-outline-primary">${sumWydatkow.get(0)}</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=dom'" type="button" class="btn btn-outline-primary">${sumWydatkow.get(0)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=kieszonkowe'" type="button" class="btn btn-outline-secondary">${sumWydatkow.get(1)}</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=kieszonkowe'" type="button" class="btn btn-outline-secondary">${sumWydatkow.get(1)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=media'" type="button" class="btn btn-outline-success">${sumWydatkow.get(2)}</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=media'" type="button" class="btn btn-outline-success">${sumWydatkow.get(2)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=oszczednosci'" type="button" class="btn btn-outline-danger">${sumWydatkow.get(3)}</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=oszczednosci'" type="button" class="btn btn-outline-danger">${sumWydatkow.get(3)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=podarunki'" type="button" class="btn btn-outline-warning">${sumWydatkow.get(4)}</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=podarunki'" type="button" class="btn btn-outline-warning">${sumWydatkow.get(4)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=podroze'" type="button" class="btn btn-outline-info">${sumWydatkow.get(5)}</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=podroze'" type="button" class="btn btn-outline-info">${sumWydatkow.get(5)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=potrzeby_codzienne'" type="button" class="btn btn-outline-dark">${sumWydatkow.get(6)}</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=potrzeby_codzienne'" type="button" class="btn btn-outline-dark">${sumWydatkow.get(6)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=technologia'" type="button" class="btn btn-outline-primary">${sumWydatkow.get(7)}</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=technologia'" type="button" class="btn btn-outline-primary">${sumWydatkow.get(7)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=transport'" type="button" class="btn btn-outline-secondary">${sumWydatkow.get(8)}</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=transport'" type="button" class="btn btn-outline-secondary">${sumWydatkow.get(8)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=ubezpieczenie'" type="button" class="btn btn-outline-warning">${sumWydatkow.get(9)}</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=ubezpieczenie'" type="button" class="btn btn-outline-warning">${sumWydatkow.get(9)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=zdrowie'" type="button" class="btn btn-outline-warning">${sumWydatkow.get(11)}</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=zdrowie'" type="button" class="btn btn-outline-warning">${sumWydatkow.get(11)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${nazwaBazy}&kategoria=zobowiazania'" type="button" class="btn btn-outline-info">${sumWydatkow.get(12)}</button>
+                        <button onclick="location.href='/homebudget/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=zobowiazania'" type="button" class="btn btn-outline-info">${sumWydatkow.get(12)}</button>
                     </td>
                 </tr>
                 </tbody>

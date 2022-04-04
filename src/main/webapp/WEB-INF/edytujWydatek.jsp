@@ -26,7 +26,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <form class="dodajWydatek" method="post" action="/homebudget/dodajWydatek">
+            <form class="dodajWydatek" method="post" action="/homebudget/edytujWydatek">
                 <input type="text" name="skrotWydatku" placeholder="skrót wydatku najpiej jedno słowo."
                        class="form-control" value="${wydatek.nazwaWydatku}">
                 <textarea name="opisWydatku" placeholder="opis Wydatku" class="form-control">${wydatek.opisWydatku}</textarea>
@@ -36,7 +36,10 @@
                 <input type="hidden" name="nazwaBazy" value="${nazwaBazy}">
                 <button class="btn btn-primary" type="submit">Edytuj Wydatek</button>
             </form>
-            <form class="dodajWydatek flex-right" method="post" action="/homebudget/dodajDodatek?nazwaBazy=${nazwaBazy}&kategoria=${kategoria}">
+            <form class="dodajWydatek flex-right" method="post" action="/homebudget/usunWydatek">
+                <input type="hidden" name="id" value="${wydatek.id}">
+                <input type="hidden" name="kategoria" value="${kategoria}">
+                <input type="hidden" name="nazwaBazy" value="${nazwaBazy}">
                 <button class="btn btn-outline-danger" type="submit">Usuń Wydatek</button>
             </form>
         </div>

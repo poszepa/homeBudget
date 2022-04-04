@@ -11,6 +11,13 @@ public class Wydatek {
     public Wydatek() {
     }
 
+    public Wydatek(int id, String nazwaWydatku, String opisWydatku, double kwotaWydatku) {
+        this.id = id;
+        this.nazwaWydatku = nazwaWydatku;
+        this.opisWydatku = opisWydatku;
+        this.kwotaWydatku = kwotaWydatku;
+    }
+
     public Wydatek(String nazwaWydatku, String opisWydatku, double kwotaWydatku) {
         this.nazwaWydatku = nazwaWydatku;
         this.opisWydatku = opisWydatku;

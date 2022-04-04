@@ -9,7 +9,6 @@ import java.util.List;
 
 public class WydatekDao {
 
-
     public Wydatek addWydatek(Wydatek wydatek, String nazwaTabeli) {
         String ADD_WYDATEK_QUERY = "INSERT INTO " + nazwaTabeli + " (nazwaWydatku, opisWydatku, kwotaWydatku, dataDodania) VALUES (? , ?, ?, CURRENT_TIMESTAMP);";
         try (Connection connection = DbUtil.getConnection()) {
@@ -32,7 +31,7 @@ public class WydatekDao {
         }
     }
 
-    private List<String> nazwaWydatkow(String nazwaBazy) {
+    public List<String> nazwaWydatkow(String nazwaBazy) {
         String ADD_WYDATEK_QUERY = "SHOW TABLES FROM " + nazwaBazy + ";";
         try (Connection connection = DbUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(ADD_WYDATEK_QUERY, PreparedStatement.RETURN_GENERATED_KEYS);
@@ -75,10 +74,8 @@ public class WydatekDao {
 
     public List<Double> sumaWydatkow(String nazwaBazy) {
         List<String> nazwyWydatkow = nazwaWydatkow(nazwaBazy);
-        System.out.println(nazwaBazy);
-        System.out.println(nazwyWydatkow);
         List<Double> sumaWydatkow = new ArrayList<>();
-        if(nazwyWydatkow.size() == 0) {
+        if (nazwyWydatkow.size() == 0) {
             return null;
         }
         for (int i = 0; i < nazwyWydatkow.size(); i++) {
@@ -99,19 +96,51 @@ public class WydatekDao {
 
     }
 
-    public Wydatek findWydatekById(int idWydatku, String nazwaBazy, String kategoria) {
+    public Wydatek findWydatekById(int idWydatku, String nazwaBazy, String kateogria) {
+        String FIND_WYDATEK_BY_ID_QUERY = "SELECT * FROM " +nazwaBazy+"."+kateogria +"  WHERE id = ?;";
         try (Connection connection = DbUtil.getConnection()) {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM " + nazwaBazy + "." + kategoria +" WHERE id= " + idWydatku +";");
-            System.out.println("SELECT * FROM " + nazwaBazy + "." + kategoria +" WHERE id= " + idWydatku +";");
+            PreparedStatement statement = connection.prepareStatement(FIND_WYDATEK_BY_ID_QUERY);
+            statement.setInt(1, idWydatku);
             ResultSet resultSet = statement.executeQuery();
             Wydatek wydatek = new Wydatek();
             while (resultSet.next()) {
-
+                wydatek.setId(resultSet.getInt("id"));
+                wydatek.setNazwaWydatku(resultSet.getString("nazwaWydatku"));
+                wydatek.setOpisWydatku(resultSet.getString("opisWydatku"));
+                wydatek.setKwotaWydatku(resultSet.getDouble("kwotaWydatku"));
+                wydatek.setDataDodania(resultSet.getString("dataDodania"));
             }
             return wydatek;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+//UPDATE kwiecien2022.dom SET nazwaWydatku = 'dupa', opisWydatku = 'dupa', kwotaWydatku = 10.0 WHERE id = 1;
+    public void editWydatekById(int idWydatku, String nazwaBazy, String kateogria, Wydatek wydatek) {
+        System.out.println(nazwaBazy);
+        System.out.println(kateogria);
+        String UPDATE_BY_ID_QUERY = "UPDATE " + nazwaBazy+ "." + kateogria + " SET nazwaWydatku = ?, opisWydatku = ?, kwotaWydatku = ? WHERE id = ?;";
+        try(Connection connection = DbUtil.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(UPDATE_BY_ID_QUERY);
+            statement.setString(1, wydatek.getNazwaWydatku());
+            statement.setString(2, wydatek.getOpisWydatku());
+            statement.setDouble(3, wydatek.getKwotaWydatku());
+            statement.setInt(4, idWydatku);
+            statement.executeUpdate();
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void usunWydatekById(int idWydatku, String nazwaBazy, String kateogria) {
+        String UPDATE_BY_ID_QUERY = "DELETE FROM " + nazwaBazy+ "." + kateogria + " WHERE id = ?;";
+        try(Connection connection = DbUtil.getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(UPDATE_BY_ID_QUERY);
+            statement.setInt(1, idWydatku);
+            statement.executeUpdate();
+        }catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

@@ -19,3 +19,8 @@ SELECT * FROM kwiecien2022.dom WHERE id=1;
 SELECT * FROM kwiecien2022.podarunki WHERE id= 2;
 
 SELECT * FROM kwiecien2022.dom WHERE id= 2;
+
+
+SHOW DATABASES;
+
+UPDATE kwiecien2022.dom SET nazwaWydatku = 'dupa', opisWydatku = 'dupa', kwotaWydatku = 10.0 WHERE id = 1;

@@ -17,7 +17,7 @@ public class DodajWydatek extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String kategoria = req.getParameter("kategoria");
         String nazwaBazy = req.getParameter("nazwaBazy");
-        String pelnaNazwaBazy = (nazwaBazy + "." + kategoria).toLowerCase();
+        String pelnaNazwaBazy = nazwaBazy + "." + kategoria;
         req.setAttribute("nazwaBazy", nazwaBazy);
         WydatekDao wydatekDao = new WydatekDao();
         req.setAttribute("list", wydatekDao.getWydatekList(pelnaNazwaBazy));

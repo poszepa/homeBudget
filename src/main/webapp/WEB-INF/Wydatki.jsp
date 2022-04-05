@@ -24,7 +24,7 @@
             </form>
         </div>
         <div class="col-6">
-            <p>Pozostało Pieniędzy: ${wyplata} zł</p>
+            <p>Pozostało Pieniędzy: <button onclick="location.href='/homebudget/wyplata'" type="button" class="btn btn-outline-success">${wyplata} zł</button></p>
             <p>Aktualnie wybrana baza: ${bazaDanych}</p>
         </div>
     </div>

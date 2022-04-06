@@ -9,13 +9,15 @@ import java.util.List;
 
 public class WydatekDao {
 
-    public Wydatek addWydatek(Wydatek wydatek, String nazwaTabeli) {
-        String ADD_WYDATEK_QUERY = "INSERT INTO " + nazwaTabeli + " (nazwaWydatku, opisWydatku, kwotaWydatku, dataDodania) VALUES (? , ?, ?, CURRENT_TIMESTAMP);";
+
+    public Wydatek addWydatek(Wydatek wydatek, String nazwaTabeli, int userID) {
+        String ADD_WYDATEK_QUERY = "INSERT INTO " + nazwaTabeli + " (nazwaWydatku, opisWydatku, kwotaWydatku, dataDodania, userID) VALUES (? , ?, ?, CURRENT_TIMESTAMP, ?);";
         try (Connection connection = DbUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(ADD_WYDATEK_QUERY, PreparedStatement.RETURN_GENERATED_KEYS);
             statement.setString(1, wydatek.getNazwaWydatku());
             statement.setString(2, wydatek.getOpisWydatku());
             statement.setDouble(3, wydatek.getKwotaWydatku());
+            statement.setInt(4, userID);
             System.out.println(nazwaTabeli);
             statement.executeUpdate();
             ResultSet resultSet = statement.getGeneratedKeys();
@@ -48,9 +50,9 @@ public class WydatekDao {
         return nazwyWydatkowBazy;
     }
 
-    public List<Wydatek> getWydatekList(String nazwaBazy) {
+    public List<Wydatek> getWydatekList(String nazwaBazy, int idUser) {
         List<Wydatek> wydatekArrayList = new ArrayList<>();
-        String LIST_WYDATKOW = "SELECT * FROM " + nazwaBazy + " ORDER BY dataDodania;";
+        String LIST_WYDATKOW = "SELECT * FROM " + nazwaBazy + " WHERE userID = " + idUser + " ORDER BY dataDodania;";
         try (Connection connection = DbUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(LIST_WYDATKOW);
             ResultSet resultSet = statement.executeQuery();
@@ -72,7 +74,7 @@ public class WydatekDao {
         }
     }
 
-    public List<Double> sumaWydatkow(String nazwaBazy) {
+    public List<Double> sumaWydatkow(String nazwaBazy, int idUser) {
         List<String> nazwyWydatkow = nazwaWydatkow();
         List<Double> sumaWydatkow = new ArrayList<>();
         if (nazwyWydatkow.size() == 0) {
@@ -81,7 +83,7 @@ public class WydatekDao {
         for (int i = 0; i < nazwyWydatkow.size(); i++) {
             double sum = 0;
             try (Connection connection = DbUtil.getConnection()) {
-                PreparedStatement statement = connection.prepareStatement("SELECT * FROM " + nazwaBazy + "." + nazwyWydatkow.get(i) + ";");
+                PreparedStatement statement = connection.prepareStatement("SELECT * FROM " + nazwaBazy + "." + nazwyWydatkow.get(i) + " WHERE userID = " + idUser +";");
                 ResultSet resultSet = statement.executeQuery();
                 while (resultSet.next()) {
                     sum += (resultSet.getDouble(4));
@@ -96,8 +98,8 @@ public class WydatekDao {
 
     }
 
-    public Wydatek findWydatekById(int idWydatku, String nazwaBazy, String kateogria) {
-        String FIND_WYDATEK_BY_ID_QUERY = "SELECT * FROM " +nazwaBazy+"."+kateogria +"  WHERE id = ?;";
+    public Wydatek findWydatekById(int idWydatku, String nazwaBazy, String kateogria, int idUser) {
+        String FIND_WYDATEK_BY_ID_QUERY = "SELECT * FROM " +nazwaBazy+"."+kateogria +"  WHERE id = ? AND userID = " + idUser + ";";
         try (Connection connection = DbUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(FIND_WYDATEK_BY_ID_QUERY);
             statement.setInt(1, idWydatku);
@@ -117,10 +119,10 @@ public class WydatekDao {
         }
     }
 //UPDATE kwiecien2022.dom SET nazwaWydatku = 'dupa', opisWydatku = 'dupa', kwotaWydatku = 10.0 WHERE id = 1;
-    public void editWydatekById(int idWydatku, String nazwaBazy, String kateogria, Wydatek wydatek) {
+    public void editWydatekById(int idWydatku, String nazwaBazy, String kateogria, Wydatek wydatek, int idUser) {
         System.out.println(nazwaBazy);
         System.out.println(kateogria);
-        String UPDATE_BY_ID_QUERY = "UPDATE " + nazwaBazy+ "." + kateogria + " SET nazwaWydatku = ?, opisWydatku = ?, kwotaWydatku = ? WHERE id = ?;";
+        String UPDATE_BY_ID_QUERY = "UPDATE " + nazwaBazy+ "." + kateogria + " SET nazwaWydatku = ?, opisWydatku = ?, kwotaWydatku = ? WHERE id = ? AND userID = " + idUser +";";
         try(Connection connection = DbUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(UPDATE_BY_ID_QUERY);
             statement.setString(1, wydatek.getNazwaWydatku());
@@ -133,8 +135,8 @@ public class WydatekDao {
         }
     }
 
-    public void usunWydatekById(int idWydatku, String nazwaBazy, String kateogria) {
-        String UPDATE_BY_ID_QUERY = "DELETE FROM " + nazwaBazy+ "." + kateogria + " WHERE id = ?;";
+    public void usunWydatekById(int idWydatku, String nazwaBazy, String kateogria , int idUser) {
+        String UPDATE_BY_ID_QUERY = "DELETE FROM " + nazwaBazy+ "." + kateogria + " WHERE id = ? AND userID = " + idUser + ";";
         try(Connection connection = DbUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(UPDATE_BY_ID_QUERY);
             statement.setInt(1, idWydatku);

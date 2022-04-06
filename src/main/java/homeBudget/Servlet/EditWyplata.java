@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/wyplataEdit")
+@WebServlet("/app/wyplataEdit")
 public class EditWyplata extends HttpServlet {
 
     @Override
@@ -23,7 +23,8 @@ public class EditWyplata extends HttpServlet {
         HttpSession session = req.getSession();
         String nazwaBazy = (String) session.getAttribute("bazaDanych");
         WyplataDao wyplataDao = new WyplataDao();
-        req.setAttribute("wyplata", wyplataDao.findSalaryById(id, nazwaBazy));
+        int idUser = (Integer)req.getSession().getAttribute("user");
+        req.setAttribute("wyplata", wyplataDao.findSalaryById(id, nazwaBazy, idUser));
 
         getServletContext().getRequestDispatcher("/WEB-INF/WyplataEdit.jsp").forward(req,resp);
 
@@ -42,8 +43,9 @@ public class EditWyplata extends HttpServlet {
         String data = (String) req.getParameter("data");
         Wyplata wyplata1 = new Wyplata(id, wyplata, opis, data);
         WyplataDao wyplataDao = new WyplataDao();
-        wyplataDao.editSalary(wyplata1, nazwaBazy);
+        int idUser = (Integer)req.getSession().getAttribute("user");
+        wyplataDao.editSalary(wyplata1, nazwaBazy, idUser);
 
-        resp.sendRedirect("/homebudget/wyplata");
+        resp.sendRedirect("/homebudget/app/wyplata");
     }
 }

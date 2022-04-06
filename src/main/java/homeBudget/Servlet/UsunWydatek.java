@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/usunWydatek")
+@WebServlet("/app/usunWydatek")
 public class UsunWydatek extends HttpServlet {
 
     @Override
@@ -18,9 +18,10 @@ public class UsunWydatek extends HttpServlet {
         String kategoria = req.getParameter("kategoria");
         int id = Integer.parseInt(req.getParameter("id"));
         WydatekDao wydatekDao = new WydatekDao();
-        wydatekDao.usunWydatekById(id, nazwaBazy, kategoria);
+        int idUser = (Integer)req.getSession().getAttribute("user");
+        wydatekDao.usunWydatekById(id, nazwaBazy, kategoria, idUser);
 
-        resp.sendRedirect("/homebudget/dodajWydatek?nazwaBazy="+nazwaBazy +"&kategoria="+kategoria);
+        resp.sendRedirect("/homebudget/app/dodajWydatek?nazwaBazy="+nazwaBazy +"&kategoria="+kategoria);
 
     }
 }

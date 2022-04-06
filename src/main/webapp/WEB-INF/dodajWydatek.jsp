@@ -20,7 +20,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <form class="dodajWydatek" method="post" action="/homebudget/dodajWydatek">
+            <form class="dodajWydatek" method="post" action="/homebudget/app/dodajWydatek">
                 <input type="text" name="skrotWydatku" placeholder="skrót wydatku najpiej jedno słowo."
                        class="form-control">
                 <textarea name="opisWydatku" placeholder="opis Wydatku" class="form-control"></textarea>
@@ -50,7 +50,7 @@
                         <td class="col">${element.opisWydatku}</td>
                         <td class="col">${element.kwotaWydatku}</td>
                         <td class="col">${element.dataDodania}</td>
-                        <th scope="col"><button onclick="location.href='/homebudget/edytujWydatek?nazwaBazy=${nazwaBazy}&kategoria=${kategoria}&id=${element.id}'" type="button" class="btn btn-outline-warning">Edytuj</button></th>
+                        <th scope="col"><button onclick="location.href='/homebudget/app/edytujWydatek?nazwaBazy=${nazwaBazy}&kategoria=${kategoria}&id=${element.id}'" type="button" class="btn btn-outline-warning">Edytuj</button></th>
                     </tr>
                     </c:forEach>
                     </tbody>

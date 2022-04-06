@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/edytujWydatek")
+@WebServlet("/app/edytujWydatek")
 public class EdytujWydatek extends HttpServlet {
 
     @Override
@@ -26,8 +26,8 @@ public class EdytujWydatek extends HttpServlet {
         req.setAttribute("kategoria", kategoria);
         req.setAttribute("nazwaBazy", nazwaBazy);
 
-
-        Wydatek wydatek = wydatekDao.findWydatekById(id,nazwaBazy, kategoria);
+        int idUser = (Integer)req.getSession().getAttribute("user");
+        Wydatek wydatek = wydatekDao.findWydatekById(id,nazwaBazy, kategoria, idUser);
         req.setAttribute("wydatek", wydatek);
 
         getServletContext().getRequestDispatcher("/WEB-INF/edytujWydatek.jsp").forward(req,resp);
@@ -44,10 +44,10 @@ public class EdytujWydatek extends HttpServlet {
             req.getParameter("opisWydatku"),
             Double.parseDouble(req.getParameter("kwota")));
 
-
+        int idUser = (Integer)req.getSession().getAttribute("user");
         WydatekDao wydatekDao = new WydatekDao();
-        wydatekDao.editWydatekById(id,nazwaBazy,kategoria, wydatek );
+        wydatekDao.editWydatekById(id,nazwaBazy,kategoria, wydatek, idUser );
 
-        resp.sendRedirect("/homebudget/dodajWydatek?nazwaBazy=" +nazwaBazy+"&kategoria=" +kategoria);
+        resp.sendRedirect("/homebudget/app/dodajWydatek?nazwaBazy=" +nazwaBazy+"&kategoria=" +kategoria);
     }
 }

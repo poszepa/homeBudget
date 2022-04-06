@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/listaWydatkow")
+@WebServlet("/app/listaWydatkow")
 public class ListaWydatkow extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,12 +28,12 @@ public class ListaWydatkow extends HttpServlet {
         BazaDanychDao bazaDanychDao = new BazaDanychDao();
         req.setAttribute("nazwyBazDanych", bazaDanychDao.bazaDanychList());
         WydatekDao wydatekDao = new WydatekDao();
-
-        req.setAttribute("sumWydatkow", wydatekDao.sumaWydatkow(nazwaBazy));
+        int idUser = (Integer) req.getSession().getAttribute("user");
+        req.setAttribute("sumWydatkow", wydatekDao.sumaWydatkow(nazwaBazy, idUser));
 
         WyplataDao wyplataDao = new WyplataDao();
-        Double sumaPrzychodow = wyplataDao.getWyplata(nazwaBazy);
-        Double sumaKosztow = wydatekDao.sumaKosztow(wydatekDao.sumaWydatkow(nazwaBazy));
+        Double sumaPrzychodow = wyplataDao.getWyplata(nazwaBazy, idUser);
+        Double sumaKosztow = wydatekDao.sumaKosztow(wydatekDao.sumaWydatkow(nazwaBazy, idUser));
 
         req.setAttribute("wyplata" , sumaPrzychodow - sumaKosztow);
 
@@ -47,6 +47,6 @@ public class ListaWydatkow extends HttpServlet {
         String nazwaBazy = req.getParameter("nazwaBazy");
         HttpSession httpSession = req.getSession();
         httpSession.setAttribute("bazaDanych", nazwaBazy);
-        resp.sendRedirect("/homebudget/listaWydatkow");
+        resp.sendRedirect("/homebudget/app/listaWydatkow");
     }
 }

@@ -5,9 +5,28 @@ public class Wyplata {
     private Double wyplata;
     private String opis;
     private String dataDodania;
+    private String userID;
 
 
     public Wyplata() {
+    }
+
+
+
+
+    public Wyplata(Double wyplata, String opis, String dataDodania, String userID) {
+        this.wyplata = wyplata;
+        this.opis = opis;
+        this.dataDodania = dataDodania;
+        this.userID = userID;
+    }
+
+    public Wyplata(int id, Double wyplata, String opis, String dataDodania, String userID) {
+        this.id = id;
+        this.wyplata = wyplata;
+        this.opis = opis;
+        this.dataDodania = dataDodania;
+        this.userID = userID;
     }
 
     public Wyplata(Double wyplata, String opis) {
@@ -20,6 +39,14 @@ public class Wyplata {
         this.wyplata = wyplata;
         this.opis = opis;
         this.dataDodania = dataDodania;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public int getId() {

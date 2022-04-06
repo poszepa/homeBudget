@@ -20,7 +20,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <form class="dodajWydatek" method="post" action="/homebudget/wyplata">
+            <form class="dodajWydatek" method="post" action="/homebudget/app/wyplata">
                 <input type="text" name="wyplataOpis" placeholder="Opis przychodu np. Kamila wypłata za marzec"
                        class="form-control">
                 <input type="number" name="kwota" placeholder="Kwota wpływu" class="form-control">
@@ -47,7 +47,7 @@
                         <td class="col">${element.opis}</td>
                         <td class="col">${element.wyplata}</td>
                         <td class="col">${element.dataDodania}</td>
-                        <th scope="col"><button onclick="location.href='/homebudget/wyplataEdit?id=${element.id}'" type="button" class="btn btn-outline-warning">Edytuj</button></th>
+                        <th scope="col"><button onclick="location.href='/homebudget/app/wyplataEdit?id=${element.id}'" type="button" class="btn btn-outline-warning">Edytuj</button></th>
                     </tr>
                     </c:forEach>
                     </tbody>

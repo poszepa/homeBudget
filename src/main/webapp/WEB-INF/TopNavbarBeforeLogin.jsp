@@ -11,7 +11,6 @@
                 <div class="navbar-nav">
                     <a class="nav-link active" aria-current="page" href="/homebudget/register">Rejestracja</a>
                 </div>
-                <a class="nav-link active" aria-current="page" href="/homebudget/app/listaWydatkow?nazwaBazy=${nazwaBazy}">Lista Wydatkow</a>
             </div>
-    </div>
+        </div>
 </nav>

@@ -26,3 +26,6 @@ SHOW DATABASES;
 UPDATE kwiecien2022.dom SET nazwaWydatku = 'dupa', opisWydatku = 'dupa', kwotaWydatku = 10.0 WHERE id = 1;
 
 SELECT SUM(wyplata) AS SUMA FROM kwiecien2022.wyplata;
+
+
+SELECT * FROM kwiecien2022.dom d JOIN users.user on d.userID = user.id;

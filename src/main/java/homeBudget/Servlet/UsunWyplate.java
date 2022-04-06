@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/wyplataDelete")
+@WebServlet("/app/wyplataDelete")
 public class UsunWyplate extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -21,7 +21,8 @@ public class UsunWyplate extends HttpServlet {
         HttpSession session = req.getSession();
         String nazwaBazy = (String) session.getAttribute("bazaDanych");
         WyplataDao wyplataDao = new WyplataDao();
-        wyplataDao.deleteSalary(id, nazwaBazy);
-        resp.sendRedirect("/homebudget/wyplata");
+        int idUser = (Integer)req.getSession().getAttribute("user");
+        wyplataDao.deleteSalary(id, nazwaBazy, idUser);
+        resp.sendRedirect("/homebudget/app/wyplata");
     }
 }

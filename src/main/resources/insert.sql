@@ -1,10 +1,25 @@
 CREATE DATABASE kwiecien2022 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE miesiace CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
+CREATE TABLE miesiac(
+                        id INT AUTO_INCREMENT,
+                        nazwa_miesiaca VARCHAR(20),
+                        PRIMARY KEY (id)
+);
+
+CREATE TABLE rok(
+                    id INT AUTO_INCREMENT,
+                    rok INT,
+                    PRIMARY KEY (id));
 
 CREATE TABLE wyplata(
     id INT AUTO_INCREMENT,
     wyplata DOUBLE,
-    PRIMARY KEY (id)
+    opis VARCHAR(100),
+    data_dodania DATE,
+    userID INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (userID) REFERENCES users.user(id)
 );
 
 CREATE TABLE kieszonkowe(
@@ -13,7 +28,9 @@ CREATE TABLE kieszonkowe(
     opisWydatku VARCHAR(50),
     kwotaWydatku DOUBLE,
     dataDodania DATE,
-    PRIMARY KEY (id)
+    userID INT NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (userID) REFERENCES users.user(id)
 );
 
 CREATE TABLE zobowiazania(
@@ -22,7 +39,9 @@ CREATE TABLE zobowiazania(
                                    opisWydatku VARCHAR(50),
                                    kwotaWydatku DOUBLE,
                                    dataDodania DATE,
-                                   PRIMARY KEY (id)
+                                   userID INT NOT NULL,
+                                   PRIMARY KEY (id),
+                                   FOREIGN KEY (userID) REFERENCES users.user(id)
 );
 
 CREATE TABLE potrzeby_codzienne(
@@ -31,7 +50,9 @@ CREATE TABLE potrzeby_codzienne(
                             opisWydatku VARCHAR(50),
                             kwotaWydatku DOUBLE,
                             dataDodania DATE,
-                            PRIMARY KEY (id)
+                            userID INT NOT NULL,
+                            PRIMARY KEY (id),
+                            FOREIGN KEY (userID) REFERENCES users.user(id)
 );
 
 CREATE TABLE podarunki(
@@ -40,7 +61,9 @@ CREATE TABLE podarunki(
                                    opisWydatku VARCHAR(50),
                                    kwotaWydatku DOUBLE,
                                    dataDodania DATE,
-                                   PRIMARY KEY (id)
+                                   userID INT NOT NULL,
+                                   PRIMARY KEY (id),
+                                   FOREIGN KEY (userID) REFERENCES users.user(id)
 );
 
 CREATE TABLE dom(
@@ -49,7 +72,9 @@ CREATE TABLE dom(
                                    opisWydatku VARCHAR(50),
                                    kwotaWydatku DOUBLE,
                                    dataDodania DATE,
-                                   PRIMARY KEY (id)
+                                   userID INT NOT NULL,
+                                   PRIMARY KEY (id),
+                                   FOREIGN KEY (userID) REFERENCES users.user(id)
 );
 
 CREATE TABLE ubezpieczenie(
@@ -58,7 +83,9 @@ CREATE TABLE ubezpieczenie(
                                    opisWydatku VARCHAR(50),
                                    kwotaWydatku DOUBLE,
                                    dataDodania DATE,
-                                   PRIMARY KEY (id)
+                                   userID INT NOT NULL,
+                                   PRIMARY KEY (id),
+                                   FOREIGN KEY (userID) REFERENCES users.user(id)
 );
 
 CREATE TABLE technologia(
@@ -67,7 +94,9 @@ CREATE TABLE technologia(
                                    opisWydatku VARCHAR(50),
                                    kwotaWydatku DOUBLE,
                                    dataDodania DATE,
-                                   PRIMARY KEY (id)
+                                   userID INT NOT NULL,
+                                   PRIMARY KEY (id),
+                                   FOREIGN KEY (userID) REFERENCES users.user(id)
 );
 
 CREATE TABLE transport(
@@ -76,7 +105,9 @@ CREATE TABLE transport(
                                    opisWydatku VARCHAR(50),
                                    kwotaWydatku DOUBLE,
                                    dataDodania DATE,
-                                   PRIMARY KEY (id)
+                                   userID INT NOT NULL,
+                                   PRIMARY KEY (id),
+                                   FOREIGN KEY (userID) REFERENCES users.user(id)
 );
 
 CREATE TABLE podroze(
@@ -85,7 +116,9 @@ CREATE TABLE podroze(
                                    opisWydatku VARCHAR(50),
                                    kwotaWydatku DOUBLE,
                                    dataDodania DATE,
-                                   PRIMARY KEY (id)
+                                   userID INT NOT NULL,
+                                   PRIMARY KEY (id),
+                                   FOREIGN KEY (userID) REFERENCES users.user(id)
 );
 
 CREATE TABLE media(
@@ -94,7 +127,9 @@ CREATE TABLE media(
                                    opisWydatku VARCHAR(50),
                                    kwotaWydatku DOUBLE,
                                    dataDodania DATE,
-                                   PRIMARY KEY (id)
+                                   userID INT NOT NULL,
+                                   PRIMARY KEY (id),
+                                   FOREIGN KEY (userID) REFERENCES users.user(id)
 );
 
 CREATE TABLE oszczednosci(
@@ -103,7 +138,9 @@ CREATE TABLE oszczednosci(
                                    opisWydatku VARCHAR(50),
                                    kwotaWydatku DOUBLE,
                                    dataDodania DATE,
-                                   PRIMARY KEY (id)
+                                   userID INT NOT NULL,
+                                   PRIMARY KEY (id),
+                                   FOREIGN KEY (userID) REFERENCES users.user(id)
 );
 
 CREATE TABLE zdrowie(
@@ -112,7 +149,9 @@ CREATE TABLE zdrowie(
                                    opisWydatku VARCHAR(50),
                                    kwotaWydatku DOUBLE,
                                    dataDodania DATE,
-                                   PRIMARY KEY (id)
+                                   userID INT NOT NULL,
+                                   PRIMARY KEY (id),
+                                   FOREIGN KEY (userID) REFERENCES users.user(id)
 );
 
 INSERT INTO miesiace.miesiac(nazwa_miesiaca) VALUES ('Styczen');
@@ -131,3 +170,33 @@ INSERT INTO miesiace.miesiac(nazwa_miesiaca) VALUES ('Grudzien');
 INSERT INTO miesiace.rok(rok) VALUES (2022);
 INSERT INTO miesiace.rok(rok) VALUES (2023);
 
+
+create table users.user
+(
+    id       int auto_increment,
+    email    varchar(50)  not null,
+    password varchar(100) not null,
+    constraint user_email_uindex
+        unique (email),
+    constraint user_id_uindex
+        unique (id)
+);
+
+alter table users.user
+    add primary key (id);
+
+
+CREATE DATABASE NazwyBazDanych CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+create table nazwy_baz_danych
+(
+    `1`       int auto_increment,
+    nazwy_baz varchar(50) null,
+    constraint nazwy_baz_danych_1_uindex
+        unique (`1`)
+);
+
+alter table nazwy_baz_danych
+    add primary key (`1`);
+
+INSERT INTO NazwyBazDanych.nazwy_baz_danych(nazwy_baz) VALUES ('kwiecien2022');

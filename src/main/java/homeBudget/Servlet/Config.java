@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/config")
+@WebServlet("/app/config")
 public class Config extends HttpServlet {
 
     @Override
@@ -30,6 +30,6 @@ public class Config extends HttpServlet {
         creatorDao.createDB(miesiac + String.valueOf(rok));
         creatorDao.createTable();
 
-        resp.sendRedirect("/homebudget/config");
+        resp.sendRedirect("/homebudget/app/config");
     }
 }

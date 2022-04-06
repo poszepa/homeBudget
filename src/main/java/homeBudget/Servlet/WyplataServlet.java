@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet("/wyplata")
+@WebServlet("/app/wyplata")
 public class WyplataServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -20,9 +20,9 @@ public class WyplataServlet extends HttpServlet {
         sesjaBazaDanych.bazaDanych(req,resp);
         HttpSession session = req.getSession();
         String nazwaBazy = (String) session.getAttribute("bazaDanych");
-
+        int idUser = (Integer)req.getSession().getAttribute("user");
         WyplataDao wyplataDao = new WyplataDao();
-        req.setAttribute("wyplataList", wyplataDao.findAllSalary(nazwaBazy));
+        req.setAttribute("wyplataList", wyplataDao.findAllSalary(nazwaBazy, idUser));
 
         getServletContext().getRequestDispatcher("/WEB-INF/Wyplata.jsp").forward(req,resp);
     }
@@ -37,10 +37,10 @@ public class WyplataServlet extends HttpServlet {
         String opis = req.getParameter("wyplataOpis");
         Double wyplata = Double.parseDouble(req.getParameter("kwota"));
         Wyplata wyplata1 = new Wyplata(wyplata, opis);
-
+        int idUser = (Integer)req.getSession().getAttribute("user");
         WyplataDao wyplataDao = new WyplataDao();
-        wyplataDao.addWyplata(wyplata1, nazwaBazy);
+        wyplataDao.addWyplata(wyplata1, nazwaBazy, idUser);
 
-        resp.sendRedirect("/homebudget/wyplata");
+        resp.sendRedirect("/homebudget/app/wyplata");
     }
 }

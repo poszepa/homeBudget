@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Locale;
 
-@WebServlet("/dodajWydatek")
+@WebServlet("/app/dodajWydatek")
 public class DodajWydatek extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -20,7 +20,8 @@ public class DodajWydatek extends HttpServlet {
         String pelnaNazwaBazy = nazwaBazy + "." + kategoria;
         req.setAttribute("nazwaBazy", nazwaBazy);
         WydatekDao wydatekDao = new WydatekDao();
-        req.setAttribute("list", wydatekDao.getWydatekList(pelnaNazwaBazy));
+        int idUser = (Integer)req.getSession().getAttribute("user");
+        req.setAttribute("list", wydatekDao.getWydatekList(pelnaNazwaBazy, idUser));
 
         req.setAttribute("kategoria", kategoria);
         req.setAttribute("nazwaBazy", nazwaBazy);
@@ -38,12 +39,12 @@ public class DodajWydatek extends HttpServlet {
         String kategoria = req.getParameter("kategoria");
         String nazwaBazy = req.getParameter("nazwaBazy").toLowerCase();
         String calaNazwaTabeli = nazwaBazy +"."+kategoria;
-
+        int idUser = (Integer)req.getSession().getAttribute("user");
         WydatekDao wydatekDao = new WydatekDao();
         Wydatek wydatek = new Wydatek(skrot, opis, kwota);
-        wydatekDao.addWydatek(wydatek, calaNazwaTabeli);
+        wydatekDao.addWydatek(wydatek, calaNazwaTabeli, idUser);
 
-        resp.sendRedirect("/homebudget/listaWydatkow?nazwaBazy="+nazwaBazy+"&kategoria="+kategoria);
+        resp.sendRedirect("/homebudget/app/listaWydatkow?nazwaBazy="+nazwaBazy+"&kategoria="+kategoria);
 
 
     }

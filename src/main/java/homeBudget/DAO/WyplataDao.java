@@ -13,8 +13,8 @@ import java.util.List;
 
 public class WyplataDao {
 
-    public Double getWyplata(String nazwaBazy) {
-        String GET_WYPLATA_QUERY = "SELECT SUM(wyplata) AS SUMA FROM "+ nazwaBazy+".wyplata;";
+    public Double getWyplata(String nazwaBazy, int idUser) {
+        String GET_WYPLATA_QUERY = "SELECT SUM(wyplata) AS SUMA FROM "+ nazwaBazy+".wyplata WHERE userID = " + idUser +";";
         try (Connection connection = DbUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(GET_WYPLATA_QUERY);
             ResultSet resultSet = statement.executeQuery();
@@ -29,12 +29,13 @@ public class WyplataDao {
         }
     }
 
-    public Wyplata addWyplata(Wyplata wyplata, String nazwaBazy) {
-        String ADD_WYPLATA_QUERY = "INSERT INTO " + nazwaBazy + ".wyplata(wyplata, opis, data_dodania) VALUES(? ,? , CURRENT_TIMESTAMP);";
+    public Wyplata addWyplata(Wyplata wyplata, String nazwaBazy, int idUser) {
+        String ADD_WYPLATA_QUERY = "INSERT INTO " + nazwaBazy + ".wyplata(wyplata, opis, data_dodania, userID) VALUES(? ,? , CURRENT_TIMESTAMP, ?);";
         try(Connection connection = DbUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(ADD_WYPLATA_QUERY, PreparedStatement.RETURN_GENERATED_KEYS);
             statement.setDouble(1,wyplata.getWyplata());
             statement.setString(2, wyplata.getOpis());
+            statement.setInt(3, idUser);
             statement.executeUpdate();
             ResultSet resultSet = statement.getGeneratedKeys();
             while (resultSet.next()){
@@ -50,8 +51,8 @@ public class WyplataDao {
 
     }
 
-    public List<Wyplata> findAllSalary(String nazwaBazy) {
-        String FIND_ALL_SALARY_QUERY = "SELECT * FROM " + nazwaBazy + ".wyplata;";
+    public List<Wyplata> findAllSalary(String nazwaBazy, int idUser) {
+        String FIND_ALL_SALARY_QUERY = "SELECT * FROM " + nazwaBazy + ".wyplata WHERE userID = " + idUser +";";
         try(Connection connection = DbUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(FIND_ALL_SALARY_QUERY);
             ResultSet resultSet = statement.executeQuery();
@@ -72,8 +73,8 @@ public class WyplataDao {
     }
 
 
-    public Wyplata findSalaryById(int id, String nazwaBazy) {
-        String FIND_SALARY_BY_ID = "SELECT * FROM " + nazwaBazy + ".wyplata WHERE id= ?;";
+    public Wyplata findSalaryById(int id, String nazwaBazy, int idUser) {
+        String FIND_SALARY_BY_ID = "SELECT * FROM " + nazwaBazy + ".wyplata WHERE id= ? AND userID = " + idUser +";";
         try(Connection connection = DbUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(FIND_SALARY_BY_ID);
             statement.setInt(1,id);
@@ -94,24 +95,26 @@ public class WyplataDao {
 
 
 
-    public void editSalary(Wyplata wyplata , String nazwaBazy) {
-        String EDIT_SALARY_QUERY = "UPDATE " + nazwaBazy + ".wyplata SET wyplata = ?, opis = ? WHERE id = ?;";
+    public void editSalary(Wyplata wyplata , String nazwaBazy, int idUser) {
+        String EDIT_SALARY_QUERY = "UPDATE " + nazwaBazy + ".wyplata SET wyplata = ?, opis = ? WHERE id = ? AND userID = ?;";
         try(Connection connection = DbUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(EDIT_SALARY_QUERY);
             statement.setDouble(1, wyplata.getWyplata());
             statement.setString(2, wyplata.getOpis());
             statement.setInt(3, wyplata.getId());
+            statement.setInt(4, idUser);
             statement.executeUpdate();
         }catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void deleteSalary(int id , String nazwaBazy) {
-        String DELETE_SALARY_QUERY = "DELETE FROM " + nazwaBazy + ".wyplata WHERE id = ?;";
+    public void deleteSalary(int id , String nazwaBazy, int idUser) {
+        String DELETE_SALARY_QUERY = "DELETE FROM " + nazwaBazy + ".wyplata WHERE id = ? AND userID = ?;";
         try(Connection connection = DbUtil.getConnection()) {
             PreparedStatement statement = connection.prepareStatement(DELETE_SALARY_QUERY);
             statement.setInt(1, id);
+            statement.setInt(2, idUser);
             statement.executeUpdate();
         }catch (SQLException e) {
             e.printStackTrace();

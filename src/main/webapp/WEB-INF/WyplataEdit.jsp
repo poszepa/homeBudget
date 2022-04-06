@@ -26,7 +26,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <form class="dodajWydatek" method="post" action="/homebudget/wyplataEdit">
+            <form class="dodajWydatek" method="post" action="/homebudget/app/wyplataEdit">
                 <input type="text" name="wyplataOpis" placeholder="Opis przychodu np. Kamila wypłata za marzec"
                        class="form-control" value="${wyplata.opis}">
                 <input type="number" name="kwota" placeholder="Kwota wpływu" class="form-control" value="${wyplata.wyplata}">
@@ -34,7 +34,7 @@
                 <input type="hidden" name="data" value="${wyplata.dataDodania}">
                 <button class="btn btn-primary" type="submit">Edytuj wpływ</button>
             </form>
-            <form class="dodajWydatek flex-right" method="post" action="/homebudget/wyplataDelete">
+            <form class="dodajWydatek flex-right" method="post" action="/homebudget/app/wyplataDelete">
                 <input type="hidden" name="id" value="${wyplata.id}">
                 <button class="btn btn-outline-danger" type="submit">Usuń Przychód</button>
             </form>

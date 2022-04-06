@@ -1,5 +1,6 @@
 CREATE DATABASE kwiecien2022 CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 CREATE DATABASE miesiace CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE users CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 CREATE TABLE miesiac(
                         id INT AUTO_INCREMENT,

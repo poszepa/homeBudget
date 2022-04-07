@@ -35,7 +35,12 @@ public class DodajWydatek extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String skrot = req.getParameter("skrotWydatku");
         String opis = req.getParameter("opisWydatku");
-        Double kwota = Double.parseDouble(req.getParameter("kwota"));
+        Double kwota = 0.0;
+        try{
+            kwota = Double.parseDouble(req.getParameter("kwota"));
+        }catch (Exception e) {
+            kwota = 0.0;
+        }
         String kategoria = req.getParameter("kategoria");
         String nazwaBazy = req.getParameter("nazwaBazy").toLowerCase();
         String calaNazwaTabeli = nazwaBazy +"."+kategoria;

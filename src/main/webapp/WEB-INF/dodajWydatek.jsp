@@ -20,11 +20,11 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <form class="dodajWydatek" method="post" action="/homebudget/app/dodajWydatek">
+            <form class="dodajWydatek formularz" method="post" action="/homebudget/app/dodajWydatek" onsubmit="validateForm()">
                 <input type="text" name="skrotWydatku" placeholder="skrót wydatku najpiej jedno słowo."
                        class="form-control">
                 <textarea name="opisWydatku" placeholder="opis Wydatku" class="form-control"></textarea>
-                <input type="number" name="kwota" placeholder="kwota wydatku" class="form-control">
+                <input type="number" name="kwota" placeholder="kwota wydatku" class="form-control kwota">
                 <input type="hidden" name="kategoria" value="${kategoria}">
                 <input type="hidden" name="nazwaBazy" value="${nazwaBazy}">
                 <button class="btn btn-primary" type="submit">Dodaj Wydatek</button>
@@ -59,6 +59,15 @@
         </div>
     </div>
 </div>
+<script>
+    function validateForm() {
+        let x = document.querySelector('.kwota').value;
+        if (x == "") {
+            alert("Kwota musi być uzupełniona");
+            return false;
+        }
+    }
+</script>
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
                             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
                             crossorigin="anonymous"></script>

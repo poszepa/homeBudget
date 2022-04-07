@@ -50,57 +50,42 @@
                 </thead>
                 <tbody>
                 <tr>
-                <tr style="background-color: grey">
-                    <th scope="col">---</th>
-                    <th scope="col">---</th>
-                    <th scope="col">---</th>
-                    <th scope="col">---</th>
-                    <th scope="col">---</th>
-                    <th scope="col">---</th>
-                    <th scope="col">---</th>
-                    <th scope="col">---</th>
-                    <th scope="col">---</th>
-                    <th scope="col">---</th>
-                    <th scope="col">---</th>
-                    <th scope="col">---</th>
-                    <th scope="col">---</th>
-                </tr>
                     <th scope="row">#</th>
                     <td>
-                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=dom'" type="button" class="btn btn-outline-primary">${sumWydatkow.get(0)}</button>
+                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=dom'" type="button" class="btn btn-outline-primary koszta">${sumWydatkow.get(0)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=kieszonkowe'" type="button" class="btn btn-outline-secondary">${sumWydatkow.get(1)}</button>
+                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=kieszonkowe'" type="button" class="btn btn-outline-secondary koszta">${sumWydatkow.get(1)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=media'" type="button" class="btn btn-outline-success">${sumWydatkow.get(2)}</button>
+                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=media'" type="button" class="btn btn-outline-success koszta">${sumWydatkow.get(2)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=oszczednosci'" type="button" class="btn btn-outline-danger">${sumWydatkow.get(3)}</button>
+                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=oszczednosci'" type="button" class="btn btn-outline-danger koszta">${sumWydatkow.get(3)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=podarunki'" type="button" class="btn btn-outline-warning">${sumWydatkow.get(4)}</button>
+                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=podarunki'" type="button" class="btn btn-outline-warning koszta">${sumWydatkow.get(4)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=podroze'" type="button" class="btn btn-outline-info">${sumWydatkow.get(5)}</button>
+                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=podroze'" type="button" class="btn btn-outline-info koszta">${sumWydatkow.get(5)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=potrzeby_codzienne'" type="button" class="btn btn-outline-dark">${sumWydatkow.get(6)}</button>
+                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=potrzeby_codzienne'" type="button" class="btn btn-outline-dark koszta">${sumWydatkow.get(6)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=technologia'" type="button" class="btn btn-outline-primary">${sumWydatkow.get(7)}</button>
+                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=technologia'" type="button" class="btn btn-outline-primary koszta">${sumWydatkow.get(7)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=transport'" type="button" class="btn btn-outline-secondary">${sumWydatkow.get(8)}</button>
+                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=transport'" type="button" class="btn btn-outline-secondary koszta">${sumWydatkow.get(8)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=ubezpieczenie'" type="button" class="btn btn-outline-warning">${sumWydatkow.get(9)}</button>
+                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=ubezpieczenie'" type="button" class="btn btn-outline-warning koszta">${sumWydatkow.get(9)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=zdrowie'" type="button" class="btn btn-outline-warning">${sumWydatkow.get(10)}</button>
+                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=zdrowie'" type="button" class="btn btn-outline-warning koszta">${sumWydatkow.get(10)}</button>
                     </td>
                     <td>
-                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=zobowiazania'" type="button" class="btn btn-outline-info">${sumWydatkow.get(11)}</button>
+                        <button onclick="location.href='/homebudget/app/dodajWydatek?nazwaBazy=${bazaDanych}&kategoria=zobowiazania'" type="button" class="btn btn-outline-info koszta">${sumWydatkow.get(11)}</button>
                     </td>
                 </tr>
                 </tbody>
@@ -109,6 +94,70 @@
         </div>
     </div>
 </div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col">
+            <div style="height: 400px; width: 600px;" class="chart">
+                <canvas id="myChart" ></canvas>
+            </div>
+        </div>
+        <div class="col">
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3/dist/chart.min.js"></script>
+<script>
+    const values = document.querySelectorAll('.koszta');
+    const arrayValue = [];
+    values.forEach(e => {
+        arrayValue.push(e.innerText);
+    })
+    console.log(arrayValue)
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: [
+                'dom',
+                'kieszonkowe',
+                'media',
+                'oszczednosci',
+                'podarunki',
+                'podroze',
+                'potrzeby_codzienne',
+                'technologia',
+                'transport',
+                'ubezpieczenie',
+                'zdrowie',
+                'zobowiazania'
+            ],
+            datasets: [{
+                label: 'Wykres wydatków',
+                data: [arrayValue[0], arrayValue[1], arrayValue[2], arrayValue[3], arrayValue[4], arrayValue[5], arrayValue[6], arrayValue[7], arrayValue[8], arrayValue[9], arrayValue[10], arrayValue[11]],
+                backgroundColor: [
+                    'rgb(117,66,66)',
+                    'rgb(80,174,238)',
+                    'rgb(255, 205, 86)',
+                    'rgb(88,108,122)',
+                    'rgb(121,93,203)',
+                    'rgb(26,41,51)',
+                    'rgb(80,76,162)',
+                    'rgb(94,98,44)',
+                    'rgb(108,120,128)',
+                    'rgb(57,136,61)',
+                    'rgb(235,54,54)',
+                    'rgb(152,19,60)'
+                ],
+                hoverOffset: 4
+            }]
+        }
+    });
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>

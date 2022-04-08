@@ -24,7 +24,7 @@
                 <input type="text" name="skrotWydatku" placeholder="skrót wydatku najpiej jedno słowo."
                        class="form-control">
                 <textarea name="opisWydatku" placeholder="opis Wydatku" class="form-control"></textarea>
-                <input type="number" name="kwota" placeholder="kwota wydatku" class="form-control kwota">
+                <input type="number" step="0.01" name="kwota" placeholder="kwota wydatku" class="form-control kwota">
                 <input type="hidden" name="kategoria" value="${kategoria}">
                 <input type="hidden" name="nazwaBazy" value="${nazwaBazy}">
                 <button class="btn btn-primary" type="submit">Dodaj Wydatek</button>

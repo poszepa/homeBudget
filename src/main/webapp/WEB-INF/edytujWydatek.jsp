@@ -30,7 +30,7 @@
                 <input type="text" name="skrotWydatku" placeholder="skrót wydatku najpiej jedno słowo."
                        class="form-control" value="${wydatek.nazwaWydatku}">
                 <textarea name="opisWydatku" placeholder="opis Wydatku" class="form-control">${wydatek.opisWydatku}</textarea>
-                <input type="number" name="kwota" placeholder="kwota wydatku" class="form-control" value="${wydatek.kwotaWydatku}">
+                <input type="number" step="0.01" name="kwota" placeholder="kwota wydatku" class="form-control" value="${wydatek.kwotaWydatku}">
                 <input type="hidden" name="id" value="${wydatek.id}">
                 <input type="hidden" name="kategoria" value="${kategoria}">
                 <input type="hidden" name="nazwaBazy" value="${nazwaBazy}">

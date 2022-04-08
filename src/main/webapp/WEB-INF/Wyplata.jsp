@@ -23,7 +23,7 @@
             <form class="dodajWydatek" method="post" action="/homebudget/app/wyplata">
                 <input type="text" name="wyplataOpis" placeholder="Opis przychodu np. Kamila wypłata za marzec"
                        class="form-control">
-                <input type="number" name="kwota" placeholder="Kwota wpływu" class="form-control">
+                <input type="number" step="0.01" name="kwota" placeholder="Kwota wpływu" class="form-control">
                 <button class="btn btn-primary" type="submit">Dodaj wpływ</button>
             </form>
         </div>

@@ -15,9 +15,8 @@
         <div class="col">
             <form action="/homebudget/app/listaWydatkow" method="post">
                 <select class="form-select" aria-label="Default select example" name="nazwaBazy">
-                    <option selected>Open this select menu</option>
                     <c:forEach var="element" items="${nazwyBazDanych}">
-                    <option value="${element}">${element}</option>
+                    <option selected value="${element}">${element}</option>
                     </c:forEach>
                 </select>
                 <button class="btn btn-primary" type="submit">Szukaj</button>

@@ -35,7 +35,7 @@ public class ListaWydatkow extends HttpServlet {
         Double sumaPrzychodow = wyplataDao.getWyplata(nazwaBazy, idUser);
         Double sumaKosztow = wydatekDao.sumaKosztow(wydatekDao.sumaWydatkow(nazwaBazy, idUser));
 
-        req.setAttribute("wyplata" , sumaPrzychodow - sumaKosztow);
+        req.setAttribute("wyplata" , Math.round((sumaPrzychodow - sumaKosztow)*100.0) / 100.0);
 
 
 

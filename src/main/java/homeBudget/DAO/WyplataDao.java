@@ -4,6 +4,8 @@ import homeBudget.model.Wyplata;
 import homeBudget.model.Wydatek;
 import homeBudget.utils.DbUtil;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,7 +24,9 @@ public class WyplataDao {
             while (resultSet.next()) {
                 wyplata += resultSet.getDouble("SUMA");
             }
-            return wyplata;
+            BigDecimal bd = new BigDecimal(wyplata).setScale(2, RoundingMode.HALF_UP);
+            Double wyplataPoprawiona = bd.doubleValue();
+            return wyplataPoprawiona;
         } catch (SQLException e) {
             e.printStackTrace();
             return 0.0;

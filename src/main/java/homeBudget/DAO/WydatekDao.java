@@ -3,6 +3,8 @@ package homeBudget.DAO;
 import homeBudget.model.Wydatek;
 import homeBudget.utils.DbUtil;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -86,9 +88,11 @@ public class WydatekDao {
                 PreparedStatement statement = connection.prepareStatement("SELECT * FROM " + nazwaBazy + "." + nazwyWydatkow.get(i) + " WHERE userID = " + idUser +";");
                 ResultSet resultSet = statement.executeQuery();
                 while (resultSet.next()) {
-                    sum += (resultSet.getDouble(4));
+                    sum += ((resultSet.getDouble(4)));
                 }
-                sumaWydatkow.add(sum);
+                BigDecimal bd = new BigDecimal(sum).setScale(2, RoundingMode.HALF_UP);
+                double suma = bd.doubleValue();
+                sumaWydatkow.add(suma);
             } catch (SQLException e) {
                 e.printStackTrace();
                 return null;
